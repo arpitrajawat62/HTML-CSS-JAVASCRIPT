@@ -22,12 +22,12 @@ const questions = [
 ];
 
 const questionEl = document.getElementById('question');
+const options = document.querySelectorAll('.answer');
 const a_text = document.getElementById('a_text');
 const b_text = document.getElementById('b_text');
 const c_text = document.getElementById('c_text');
 const d_text = document.getElementById('d_text');
 const submitBtn = document.getElementById('submit');
-
 
 let currentQuiz = 0;
 let score = 0;
@@ -35,43 +35,45 @@ let score = 0;
 loadQuiz();
 
 function loadQuiz() {
-   const currentQuizData = questions[currentQuiz];
+    const currentQuizData = questions[currentQuiz];
 
-   questionEl.innerText = currentQuizData.question;
-
+    questionEl.innerText = currentQuizData.question;
     a_text.innerText = currentQuizData.options[0];
     b_text.innerText = currentQuizData.options[1];
     c_text.innerText = currentQuizData.options[2];
     d_text.innerText = currentQuizData.options[3];
 
+    options.forEach(option => option.checked = false);
 }
 
-function getSelected(){
-    const answers = document.querySelectorAll('.answer');
-    let selectedAnswer;
-
-    answers.forEach((answer)=>{
-        if(answer.checked){
-            selectedAnswer = answer.id;
+function getSelected() {
+    let selectedIndex = null;
+    
+    options.forEach((option, index) => {
+        if (option.checked) {
+            selectedIndex = index;
         }
     });
+
+    return selectedIndex;
 }
-
-
 
 submitBtn.addEventListener('click', () => {
     const selectedAnswer = getSelected();
 
-    if(selectedAnswer){
-        if(selectedAnswer == questions[currentQuiz].answer.toString()){
+    if (selectedAnswer !== null) {
+        if (selectedAnswer === questions[currentQuiz].answer) {
             score++;
         }
-    }
-    currentQuiz++;
 
-    if(currentQuiz < questions.length){
-        loadQuiz();
-    }else{
-        alert('You have completed the quiz.Your score is ${score}/${questions.length}');
+        currentQuiz++;
+
+        if (currentQuiz < questions.length) {
+            loadQuiz();
+        } else {
+            alert(`You have completed the quiz. Your score is ${score}/${questions.length}`);
+        }
+    } else {
+        alert("Please select an answer before submitting!");
     }
 });
