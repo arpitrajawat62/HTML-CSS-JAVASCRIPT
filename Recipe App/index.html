@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe App</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous">
+
+</head>
+<body>
+     <header>
+        <nav>
+            <div class="nav-brand">
+                <i class="fas fa-utensils"></i>
+                <h1>Recipe App</h1>
+            </div>
+            
+            <div class="nav-menu">
+                <form class="search-form">
+                    <div class="search-container">
+                        <input type="text" placeholder="Search for recipes....." class="searchBox">
+                        <button type="submit" class="searchBtn">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </form>
+                
+                <div class="nav-controls">
+                    <button type="button" class="theme-toggle" title="Toggle Theme">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <button type="button" class="favorites-btn" title="Favorites">
+                        <i class="fas fa-heart"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+     </header>
+
+     <main>
+        <section>
+            <div class="recipe-container">
+                <h2>Search for favorite recipes</h2>
+            </div>
+            <div class="recipe-details">
+                <button type="button" class="recipe-close-btn">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div class="recipe-details-content"></div>
+            </div>
+        </section>
+     </main>
+  
+     <script src="script.js"></script>
+</body>
+</html>
